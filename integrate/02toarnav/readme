@@ -1,0 +1,8 @@
+1st : open main.h and edit absolute path given in 4 locations 
+to find absolute path, type 'pwd' in cmd line.
+
+the call.c contains function call which you need to have in your program to call this huffman.
+
+just run 
+'gcc *.c'
+in cmd line to compile the program.
