@@ -1,26 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "huffman.h"
-
+float a =0.0;
+float d=0.0;
+float dd=0.0;
 // Encoding Function Declaration
-int encode(float *,float *, float *);
+int encode(float *,float *,float*);
 
 int main(){
 
-	float a =0.0;
-	float d=0.0;
-	float u=0.0;
-	//Calling huffman function
-	encode(&a,&d,&u);
 	
-	printf("Orignial filesize: %f \nCompressed filesize: %f\nDecompressed file size:%f\n", a, d,u);
-
+	//Calling huffman function
+	encode(&a,&d,&dd);
+	printf("Orignial filesize: %f \nCompressed filesize: %f\nDecompressed file size:%f\n", a, d,dd);
 	return 0;
 	
 	}
 	
 	
-int encode(float *a,float *d,float *u){
+int encode(float *a,float *d){
 	// Reading the BMP File
     int i, j;
 	char filename[] = "file.bmp"; 
@@ -316,9 +314,11 @@ int encode(float *a,float *d,float *u){
 	diff=actual_size-tsize;
 	
 	
-	
-	//Initializing file pointer for uncompressed file
+//Initializing file pointer for uncompressed file
+	FILE* fp1;
 	FILE* fp2;
+	char c;
+	fp1= fopen("file.bmp", "rb");if (fp1== NULL){printf("Error Opening File!!");exit(0);}
 	fp2= fopen("uncompressed.bmp", "wb");if (fp2 == NULL) { printf("Cannot open file\n"); exit(0); } 
 	
 	c = fgetc(fp1); 
@@ -344,21 +344,26 @@ char ch;
 	int m_factor=2;
     size = ftell(fp2);   /* take a position of file pointer un size variable */
 	float u_size=0.0;
-	u_size= (float)(size)*(0.125/m_factor);
+	u_size= (float)(size)*(1.28/m_factor);
 	fclose(fp1); 
-    fclose(fp2);
+        fclose(fp2);
 	
-	
-	
-	//Assigning required value to pointers a,d and u
+ //Assigning required value to pointers a,d and u
     *a=actual_size;
     *d=diff;
-	*u= u_size;
-
-    return 0;
+    *dd= u_size;
 	
-	
+    return 0;	
 }
+
+void fun()
+	{
+		printf("%f",dd);
+	}
+
+	
+	
+	
 	
    
 	
