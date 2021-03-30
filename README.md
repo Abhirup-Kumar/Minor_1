@@ -1,2 +1,3 @@
 # Minor_1
-First Minor College Project
+Project detail is contained in Minor 1_Synopsis.pdf file. 
+Please refer to it, for more information.
